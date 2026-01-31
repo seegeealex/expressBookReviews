@@ -9,10 +9,10 @@ public_users.post("/register", (req,res) => {
   const password = req.body.password;
 
   if (!username || !password) {
-    return res.status(200).send(`include username and password in body`);
+    return res.status(404).send(`include username and password in body`);
   }
   if (isValid(username)) {
-    return res.status(200).send(`User ${username} is already registered.`);
+    return res.status(404).send(`User ${username} is already registered.`);
   }
   users[username] = password;
   return res.status(200).send(`User ${username} has been registered.`);
